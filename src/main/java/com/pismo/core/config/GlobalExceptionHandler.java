@@ -1,7 +1,7 @@
 package com.pismo.core.config;
 
-import com.pismo.core.domain.dto.response.ErrorResponse;
-import com.pismo.core.domain.exception.BusinessException;
+import com.pismo.core.shared.domain.dto.response.ErrorResponse;
+import com.pismo.core.shared.domain.exception.BusinessException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
