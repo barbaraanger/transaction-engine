@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: core
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    driver-class-name: org.postgresql.Driver
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: false
+  flyway:
+    locations: classpath:db/migration
+    enabled: true
+    baseline-on-migrate: false
+logging:
+  level:
+    org.flywaydb: DEBUG
+    org.springframework.boot.autoconfigure.flyway: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env,beans,loggers
+  server:
+    port: 8081
+  endpoint:
+    health:
+      show-details: always
+      group:
+        liveness:
+          include: diskSpace, ping
+        readiness:
+          include: db, diskSpace, ping
