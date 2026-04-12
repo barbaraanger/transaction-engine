@@ -1,6 +1,6 @@
 package com.pismo.core.domain.enums;
 
-import com.pismo.core.exception.InvalidOperationTypeException;
+import com.pismo.core.domain.exception.InvalidOperationTypeException;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

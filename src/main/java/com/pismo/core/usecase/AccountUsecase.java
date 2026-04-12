@@ -2,8 +2,8 @@ package com.pismo.core.usecase;
 
 import com.pismo.core.domain.dto.request.CreateAccountRequest;
 import com.pismo.core.domain.entity.Account;
-import com.pismo.core.exception.AccountNotFoundException;
-import com.pismo.core.exception.ResourceAlreadyExistsException;
+import com.pismo.core.domain.exception.AccountNotFoundException;
+import com.pismo.core.domain.exception.ResourceAlreadyExistsException;
 import com.pismo.core.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
