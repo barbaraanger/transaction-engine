@@ -4,7 +4,9 @@ This is a simple transaction engine implemented in Java 21 with Spring Boot. It 
 
 The goal of this project is to implement a simple transaction engine that can handle various types of transactions (purchase, installment purchase, withdrawal, payment) while managing accounts and ensuring data integrity. The application should be able to create accounts, perform transactions, and retrieve account details.
 
-The application is designed as a modular monolith. For more details, refer to [ARCHITECTURE.md](ARCHITECTURE.md).
+This approach was chosen instead of microservices to reduce operational complexity while still allowing future scalability.
+
+For a detailed explanation of design decisions, trade-offs, and system structure, see [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ---
 ## Technologies Used

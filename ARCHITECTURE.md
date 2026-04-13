@@ -1,9 +1,18 @@
 ## Architectural Decisions
-I opted for a less complexity along the way, given the scope of the challenge, a modular monolith with clear boundaries and ownership.
+This system was designed as a **modular monolith**, prioritizing simplicity, maintainability, and clear domain boundaries given the scope of the challenge.
+
+## System Overview
+
+The system is responsible for managing accounts and financial transactions, supporting operations such as purchases, withdrawals, payments, and installment processing.
+
+It ensures:
+- Transaction consistency
+- Clear separation of business rules
+- Extensibility for new operation types
 
 ## Code Structure Tree
 I structured the codebase around the main business domains (accounts and transactions) with clear separation of concerns within each module (controller, service, repository, domain, etc.) and a shared module for cross-cutting concerns. This structure promotes modularity, maintainability, and scalability while keeping the code organized and easy to navigate.
-Thinking on a simple volumetry and the scope of the challenge, I avoided over-engineering with too many layers or abstractions, while still following good design principles and patterns to ensure a clean and maintainable codebase.
+Given the expected low throughput and scope of the challenge, the design avoids unnecessary complexity while keeping extensibility in mind.
 
 ```text
 .
@@ -75,6 +84,8 @@ Thinking on a simple volumetry and the scope of the challenge, I avoided over-en
 - Coupling can grow without module discipline.
 - Deployment risk increases as codebase grows.
 
+For future scalability and architectural evolution, see the [Evolution Path](#evolution-path) section below.
+
 ### 2) Relational Database
 
 **Decision**: PostgreSQL as the system of record.
@@ -113,12 +124,13 @@ Thinking on a simple volumetry and the scope of the challenge, I avoided over-en
 
 ## Request Flow (Transaction Creation)
 
-`POST /transactions`:
-1. Controller validates input contract.
-2. Use case validates account and resolves operation strategy.
-3. Service persists transaction.
-4. Repository writes through Spring Data JPA.
-5. API returns `201 Created` with transaction payload.
+1. The controller receives and validates the request.
+2. The use case orchestrates the business flow:
+  - Validates account existence
+  - Resolves the correct operation strategy
+3. The service applies business rules and prepares the transaction
+4. The repository persists the data via JPA
+5. A `201 Created` response is returned
 
 ## Naming Convention Decision
 
