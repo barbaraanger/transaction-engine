@@ -1,4 +1,4 @@
-package com.pismo.core.config;
+package com.pismo.core.shared.config;
 
 import com.pismo.core.shared.domain.dto.response.ErrorResponse;
 import com.pismo.core.shared.domain.exception.BusinessException;
